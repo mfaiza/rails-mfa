@@ -1,0 +1,13 @@
+<%= link_to 'Kembali', articles_path  %>
+<br>
+<h1 class="heading-title">No: <strong><%= @article.id %></strong></h1>
+<div class="article">
+    <p>
+        <label for="title">Title: </label>
+        <label for="title"><%= @article.title %></label>
+    </p>
+    <p>
+        <label for="body">Body: </label>
+        <label for="body"><%= @article.body %></label>
+    </p>
+</div>
