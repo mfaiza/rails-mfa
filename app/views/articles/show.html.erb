@@ -10,4 +10,8 @@
         <label for="body">Body: </label>
         <label for="body"><%= @article.body %></label>
     </p>
+    <p>
+    	<%= link_to 'Edit', edit_article_path  %> |
+    	<%= link_to 'Delete', article_path, method: :delete, data: {confirm: "are you sure?"}  %>
+    </p>
 </div>

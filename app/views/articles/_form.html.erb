@@ -1,14 +1,24 @@
+<div class="error-explanation">
+    <% if @article.errors.any? %>
+        <h2><%= @article.errors.count %> Errors Detected: </h2>
+        <ul>
+            <% @article.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </ul>
+    <% end %>
+</div>
+<br>
 <%= form_with model: @article, local: true do |f| %>
-        <p>
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-        </p>
-        <p>
-            <%= f.label :body %>
-            <%= f.text_area :body %>
-        </p>
-        <p>
-            <%= f.submit %>
-        </p>
+    <p>
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :body %><br>
+        <%= f.text_area :body %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
 <% end %>
-  
