@@ -5,21 +5,30 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
+  # username: faizalam
+  # password: 11706155a
+  # host: localhost
 
 development:
   <<: *default
-  database: db/crud-railscourse.sqlite3
+  database: rails-mfa_develovment
+  username: faizalam
+  password: 11706155a
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/tecrud-railscoursest.sqlite3
+  database: rails-mfa_test
 
 production:
   <<: *default
-  database: db/crud-railscourse.sqlite3
+  database: rails-mfa_production
+  username: rails-mfa
+  password: <%= ENV['RAILS-MFA_DATABASE_PASSWORD'] %>
