@@ -1,3 +1,45 @@
-
 @import "article";
 @import 'bootstrap/dist/css/bootstrap';
+
+.navbar{
+	background-color: black !important;
+}
+
+.nav-link{
+	color: white !important;
+}
+#logo{
+	float: left;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+	color: #fff;
+	font-size: 1.7rem;
+	font-weight: bold;
+}
+#home-container{
+	margin-top: 25px;
+}
+.navbar-toggler{
+	background-color: white !important;
+}
+
+.jumbotron{
+	background-image: asset-url('jumb-img.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 425px;
+}
+html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+}
