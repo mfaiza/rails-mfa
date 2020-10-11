@@ -1,25 +1,27 @@
 <div id="page-content">
-  <h1 class="text-center mt-4">Article No: <%= @article.id %> </h1>
-    <div class="container">
-        <div class="form-group row">
-            <%= label_tag "title", "Title:" ,class: "col-sm-2" %>
-            <div class="col-sm-10">
-                <%= @article.title %>
+  <h2 class="text-center mt-4"><%= @article.title %></h2>
+  <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+          <div class="card text-center shadow mb-5 bg-white rounded">
+            <div class="card-header font-italic">
+              by Faiz Alam
             </div>
-        </div>
-        <div class="form-group row">
-            <%= label_tag "body", "Body :" ,class: "col-sm-2" %>
-            <div class="col-sm-10">
-                <%= @article.body %>
+            <div class="card-body">
+              <div class="card-text text-left"><%= simple_format(@article.body) %></div>
+              <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-warning"%>
+              <%= link_to 'Delete', article_path(@article), method: :delete,
+                  data: {confirm: "are you sure?"}, class: "btn btn-outline-danger"%>
             </div>
+            <div class="card-footer text-muted">
+              <small>Created <%= time_ago_in_words(@article.created_at) %> ago,
+              edited <%= time_ago_in_words(@article.updated_at) %> ago, </small>
+            </div>
+          </div>
         </div>
-        <div class="form-group row">
-            <%= link_to 'Edit', edit_article_path, class: "btn btn-warning col-sm-5" %> |
-            <%= link_to 'Edit', edit_article_path, class: "btn btn-warning col-sm-5" %> 
-        </div>
-        <div class="text-center">
-            <%= link_to 'Return to Articles page', articles_path, class: "btn btn-primary" %>
-        </div>
-    </div>
+      </div>
+      <div class="form-group row justify-content-center">
+        <%= link_to '[ Return to articles page ]', articles_path, class: "text-info"  %>
+      </div>
+  </div>
 </div>
-
