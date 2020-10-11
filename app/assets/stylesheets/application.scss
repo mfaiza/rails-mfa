@@ -1,5 +1,7 @@
 @import "article";
 @import 'bootstrap/dist/css/bootstrap';
+	
+$enable_gradient: true;
 
 .navbar{
 	background-color: black !important;
