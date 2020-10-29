@@ -2,11 +2,24 @@ class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     def index
+        # Success *Static search
+        # if params[:search]
+        #     @articles = Article.where("title LIKE '%#{params[:search]}%'").or(Article.where("body LIKE '%#{params[:search]}%'"))
+        # else
+        #     @articles = Article.order('created_at ASC')
+        # end
+        # End Success
+
+        # Success 2 * Static
         if params[:search]
-            @articles = Article.where("title LIKE '%#{params[:search]}%'").or(Article.where("body LIKE '%#{params[:search]}%'"))
+            search = params[:search].downcase.gsub(/\s+/, "")
+            @articles = Article.all.select{ |article|
+                article.title.include?(search) ||
+                article.body.include?(search) }
         else
-            @articles = Article.order('created_at ASC')
+            @articles = Article.all
         end
+        # End Success
     end
 
     def show
