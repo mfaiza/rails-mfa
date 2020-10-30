@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+    has_many :articles
     validates :username, uniqueness: { case_sensitive: false }, 
                         presence: true, 
                         length: { minimun: 3, maximum: 25 }
