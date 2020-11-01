@@ -1,10 +1,10 @@
 <h2 class="text-center mt-4"><%= @article.title %></h2>
 <div class="container">
-  <div class="row justify-content-md-center">
+  <div class="row justify-content-center">
     <div class="col-8 mt-4">
       <div class="card text-center shadow mb-5 bg-white rounded">
         <div class="card-header font-italic">
-          by Faiz Alam
+          by <%= @article.user.username if @article.user %>
         </div>
         <div class="card-body">
           <div class="card-text text-left"><%= simple_format(@article.body) %></div>
