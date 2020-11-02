@@ -12,4 +12,5 @@ class User < ApplicationRecord
                     length: { maximum: 105 },
                     format: { with: URI::MailTo::EMAIL_REGEXP } #Simple version hehe
 
+    has_secure_password
 end
