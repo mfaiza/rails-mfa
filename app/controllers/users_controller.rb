@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   
+  def show
+    set_user
+    @articles = set_user.articles
+  end
+
   def new
     @user = User.new
   end

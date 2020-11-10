@@ -1,42 +1,16 @@
 <h1 class="text-center mt-4">List of Article</h1>
-<div class="container">    
-  <div class="row justify-content-end">
-    <div class="col-6 pt-4">
-
-      <%= form_tag articles_path, method: :get do %>  
-        <div class="form-group row ">
-          <span class="mb-1">Search by Title or Body: </span><%= text_field_tag :search, params[:search], class: "form-control col-10" %>       
-          <div class="col-2">
-            <%= submit_tag "Search", class: "btn btn-primary", name: nil %>
-          </div>
-        </div>
-      <% end %>
-
-    </div>
-  </div>
-
-  <% @articles.each do |article| %>
-    <div class="row justify-content-center">
-      <div class="col-8 mt-4">
-        <div class="card text-center shadow mb-5 bg-white rounded">
-          <div class="card-header font-italic">
-            by <%= article.user.username if article.user %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= link_to article.title, article_path(article), class: "text-success" %></h5>
-            <p class="card-text"><%= truncate(article.body, length: 100) %></p>
-            <%= link_to 'View', article_path(article), class: "btn btn-outline-success"%>
-            <%= link_to 'Edit', edit_article_path(article), class: "btn btn-outline-warning"%>
-            <%= link_to 'Delete', article_path(article), method: :delete,
-                data: {confirm: "are you sure?"}, class: "btn btn-outline-danger"%>
-          </div>
-          <div class="card-footer text-muted">
-            <small>Created <%= time_ago_in_words(article.created_at) %> ago,
-            edited <%= time_ago_in_words(article.updated_at) %> ago, </small>
-          </div>
+  
+<div class="row justify-content-end">
+  <div class="col-6 pt-4">
+    <%= form_tag articles_path, method: :get do %>  
+      <div class="form-group row ">
+        <span class="mb-1">Search by Title or Body: </span><%= text_field_tag :search, params[:search], class: "form-control col-10" %>       
+        <div class="col-2">
+          <%= submit_tag "Search", class: "btn btn-primary", name: nil %>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
+<%= render 'articles' %>  
