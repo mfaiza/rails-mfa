@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   
+  def index
+    # @users = User.order("created_at ASC")
+    @users = User.order("created_at ASC")
+  end
+  
   def show
     set_user
     @articles = set_user.articles

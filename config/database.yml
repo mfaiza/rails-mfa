@@ -9,26 +9,26 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  # username: faizalam
-  # password: 11706155a
-  # host: localhost
+  username: mfaiza
+  password: 11706155a
+  host: localhost
 
 development:
   <<: *default
-  database: rails-mfa_develovment
-  username: faizalam
-  password: 11706155a
-  host: localhost
+  database: mfa-blog_develovment
+  # username: mfaiza
+  # password: 11706155a
+  # host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails-mfa_test
+  database: mfa-blog_test
 
 production:
   <<: *default
-  database: rails-mfa_production
-  username: rails-mfa
+  database: mfa-blog_production
+  username: mfaiza
   password: <%= ENV['RAILS-MFA_DATABASE_PASSWORD'] %>
