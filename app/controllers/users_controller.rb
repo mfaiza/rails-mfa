@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     set_user
     if set_user.update(user_params)
       flash[:notice] = "Your account successfully updated!!!"
-      redirect_to articles_path
+      redirect_to @user
     else
       render :edit
     end
