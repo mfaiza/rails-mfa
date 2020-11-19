@@ -2,12 +2,13 @@ class UsersController < ApplicationController
   
   def index
     # @users = User.order("created_at ASC")
-    @users = User.order("created_at ASC")
+    @users = User.paginate(page: params[:page])
+
   end
   
   def show
     set_user
-    @articles = set_user.articles
+    @articles = set_user.articles.paginate(page: params[:page])
   end
 
   def new
