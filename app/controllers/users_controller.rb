@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  before_action :set_user, only: [:show, :edit, :update]
   def index
     # @users = User.order("created_at ASC")
     @users = User.paginate(page: params[:page])
@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
   
   def show
-    set_user
     @articles = set_user.articles.paginate(page: params[:page])
   end
 
@@ -18,6 +17,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "Welcome to MFA-Blog #{@user.username}, you have successfully sign in"
       redirect_to articles_path
     else
@@ -26,11 +26,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    set_user
   end
 
   def update
-    set_user
     if set_user.update(user_params)
       flash[:notice] = "Your account successfully updated!!!"
       redirect_to @user

@@ -20,11 +20,22 @@
                     <a class="dropdown-item" href="#">Calon Link</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <%= link_to "Log In", login_path, class: "nav-link"  %>
-            </li><li class="nav-item">
-                <%= link_to "Log Out", logout_path, class: "nav-link", method: :delete  %>
-            </li>
+            
+            <% if logged_in? %>
+                <li class="nav-item">   
+                    <%= link_to current_user.username, user_path(current_user), class: "nav-link" %>
+                </li>
+                <li class="nav-item">   
+                    <%= link_to "Log Out", logout_path, class: "nav-link", method: :delete  %>
+                </li>
+            <% else %>
+                <li class="nav-item">
+                    <%= link_to "Log In", login_path, class: "nav-link"  %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Sign Up", signup_path, class: "nav-link"  %>
+                </li>
+            <% end %>
         </ul>
         
         <%= form_tag articles_path, class: "form-inline my-2 my-lg-0", method: :get do %>
