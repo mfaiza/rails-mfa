@@ -21,14 +21,14 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <%= link_to "Log In", login_path, class: "nav-link"  %>
+            </li><li class="nav-item">
+                <%= link_to "Log Out", logout_path, class: "nav-link", method: :delete  %>
             </li>
         </ul>
         
         <%= form_tag articles_path, class: "form-inline my-2 my-lg-0", method: :get do %>
-            <%# <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> %>
             <%= search_field_tag :search, params[:search], class: "form-control mr-sm-2", placeholder: "Search" %>  
-            <%# <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> %>
             <%= submit_tag "Search", class: "btn btn-outline-primary my-2 my-sm-0", name: nil %>
         <% end %>
         
