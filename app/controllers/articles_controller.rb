@@ -1,16 +1,9 @@
 class ArticlesController < ApplicationController
     before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:index, :show]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def index
-        # Success *Static search
-        # if params[:search]
-        #     @articles = Article.where("title LIKE '%#{params[:search]}%'").or(Article.where("body LIKE '%#{params[:search]}%'"))
-        # else
-        #     @articles = Article.order('created_at ASC')
-        # end
-        # End Success
-
-        # Success 2 * Static
         if params[:search]
             search = params[:search].downcase.gsub(/\s+/, "")
             @articles = Article.all.select{ |article|
@@ -60,11 +53,19 @@ class ArticlesController < ApplicationController
     end
 
     private
+
         def article_params
             params.require(:article).permit(:title, :body)
         end
 
         def set_article
             @article = Article.find(params[:id])
+        end
+
+        def require_same_user
+            if current_user != @article.user
+                flash[:alert] = "You can only edit or delete your own article!!"
+                redirect_to @article
+            end
         end
 end
