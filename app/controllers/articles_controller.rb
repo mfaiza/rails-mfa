@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
             search = params[:search].downcase.gsub(/\s+/, "")
             @articles = Article.all.select{ |article|
                 article.title.include?(search) ||
-                article.body.include?(search) }
+                article.body.include?(search) }.paginate(page: params[:page])
         else
             @articles = Article.paginate(page: params[:page])
         end
