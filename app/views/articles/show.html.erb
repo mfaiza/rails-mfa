@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
           <div class="card-text text-left"><%= simple_format(@article.body) %></div>
-          <% if logged_in? && @article.user == current_user %>
+          <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
             <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-outline-warning"%>
             <%= link_to 'Delete', article_path(@article), method: :delete,
               data: {confirm: "are you sure?"}, class: "btn btn-outline-danger"%>

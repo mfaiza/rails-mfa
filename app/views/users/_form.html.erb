@@ -25,9 +25,15 @@
                     <%= f.submit(@user.new_record? ? "Sign Up" : "Update account", class: "btn btn-outline-light btn-lg ") %>       
                 </div>
             <% end %>
-            <div class="mb-3 form-group row justify-content-center">
-                <%= link_to '[ Return to articles page ]', articles_path, class: "text-info"  %>
-            </div>
+            <% if logged_in? %>
+                <div class="mb-3 form-group row justify-content-center">
+                    <%= link_to '[ Return to articles page ]', articles_path, class: "text-info"  %>
+                </div>
+            <% else %>
+                <div class="mb-3 form-group row justify-content-center">
+                    <%= link_to '[ Return to Home page ]', root_path, class: "text-info"  %>
+                </div>
+            <% end %>
         </div>
     </div>
 </div>
