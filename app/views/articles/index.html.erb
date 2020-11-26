@@ -4,9 +4,12 @@
   <div class="col-6 pt-4">
     <%= form_tag articles_path, method: :get do %>  
       <div class="form-group row ">
-        <span class="mb-1">Search by Title or Body: </span>
-        <%= search_field_tag :search, params[:search], class: "form-control col-10" %>       
-        <div class="col-2">
+        <%= text_field_tag :title, params[:title], placeholder: "Search title", class: "form-control col-lg-4" %>
+        <div class="col-sm-2">
+          <%= submit_tag "Search", class: "btn btn-primary", name: nil %>
+        </div>
+        <%= text_field_tag :body, params[:body], placeholder: "Search body", class: "form-control col-lg-4" %>
+        <div class="col-sm-2">
           <%= submit_tag "Search", class: "btn btn-primary", name: nil %>
         </div>
       </div>

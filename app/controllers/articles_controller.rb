@@ -4,15 +4,10 @@ class ArticlesController < ApplicationController
     before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def index
-        if params[:search]
-            search = params[:search].downcase.gsub(/\s+/, "")
-            @articles = Article.all.select{ |article|
-                article.title.include?(search) ||
-                article.body.include?(search) }.paginate(page: params[:page])
-        else
-            @articles = Article.paginate(page: params[:page])
-        end
-        # End Success
+        @articles = Article.paginate(page: params[:page]).where(nil)
+        @articles = Article.where("title ILIKE ?", "%#{params[:title]}%").paginate(page: params[:page]) if params[:title].present?
+        @articles = Article.where("body ILIKE ?", "%#{params[:body]}%").paginate(page: params[:page]) if params[:body].present?
+        @articles = Article.where("title ILIKE ?", "%#{params[:title]}%").where("body ILIKE ?", "%#{params[:body]}%").paginate(page: params[:page]) if params[:title].present? && params[:body].present?
     end
 
     def show
