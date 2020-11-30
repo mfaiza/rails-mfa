@@ -9,13 +9,13 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: mfaiza
+  username: faizalam
   password: 11706155a
   host: localhost
 
 development:
   <<: *default
-  database: mfa-blog_develovment
+  database: rails-mfa_develovment
   # username: mfaiza
   # password: 11706155a
   # host: localhost
@@ -25,10 +25,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: mfa-blog_test
+  database: rails-mfa_test
 
 production:
   <<: *default
-  database: mfa-blog_production
+  database: rails-mfa_production
   username: mfaiza
   password: <%= ENV['RAILS-MFA_DATABASE_PASSWORD'] %>
