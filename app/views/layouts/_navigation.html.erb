@@ -9,6 +9,7 @@
             <li class="nav-item">
                 <%= link_to 'Bloggers', users_path, class: "nav-link" %>
             </li>
+            <!-- Articles -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Articles
@@ -20,7 +21,19 @@
                     <%= link_to "View the article", articles_path, class: "dropdown-item"  %>
                 </div>
             </li>
-            
+            <!-- Categories -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if logged_in? && current_user.admin? %>
+                    <%= link_to "Create a new categories", new_category_path, class: "dropdown-item" %>
+                <% end %>
+                    <%= link_to "View the Categories", categories_path, class: "dropdown-item"  %>
+                </div>
+            </li>
+            <!-- Profile/Sign inout -->
             <% if logged_in? %>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
